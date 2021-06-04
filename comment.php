@@ -77,7 +77,7 @@
             </div>
         </form>
         <?php
-            $sql = "SELECT `id`, `topic`, `topicown`, `comment`, `commentown`, `like` FROM `insidePost` WHERE topic='$topic' AND topicown='$topicown' ORDER BY id DESC";   
+            $sql = "SELECT `id`, `topic`, `topicown`, `comment`, `commentown`, `like`, `date_create` FROM `insidePost` WHERE topic='$topic' AND topicown='$topicown' ORDER BY id DESC";   
             $objQuery = mysqli_query($conn, $sql);
             
         ?>
@@ -87,7 +87,10 @@
             <div class="p-3">
                 <div class="thiscomment border border-secondary p-3 rounded">
                     <h4 name="comment" class="comment text-info"><?php echo $objResult["comment"]; ?></h4>
-                    <p>commented by <?php echo $objResult["commentown"]; ?></p>
+                    <div class="d-flex justify-content-between pt-3 text-muted">
+                        <p>commented by <?php echo $objResult["commentown"]; ?></p>
+                        <p><?php echo $objResult["date_create"]; ?></p>
+                    </div>
                 </div>   
             </div>
             <?php } ?>

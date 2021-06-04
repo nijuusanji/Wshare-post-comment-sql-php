@@ -48,17 +48,17 @@
         <?php //endif ?> -->
         
         <form action="feed_db.php" method="post" class="pt-5">
-            <!-- <?php //include('errors.php'); ?>
-            <?php //if (isset($_SESSION['posted'])) : ?>
+            <?php include('errors.php'); ?>
+            <?php if (isset($_SESSION['posted'])) : ?>
                 <div class="posted">
                     <h3>
                         <?php 
-                            //echo $_SESSION['posted'];
-                            //unset($_SESSION['posted']);
+                            echo $_SESSION['posted'];
+                            unset($_SESSION['posted']);
                         ?>
                     </h3>
                 </div>
-            <?php //endif ?> -->
+            <?php endif ?>
             <?php if (isset($_SESSION['error'])) : ?>
                 <div class="error text-danger">
                     <p>
@@ -80,7 +80,7 @@
         
         <?php
             require('connect.php');
-            $sql = 'SELECT `id`,`topic`, `username`, `comment` FROM post ORDER BY id DESC';
+            $sql = 'SELECT `id`,`topic`, `username`, `date_create` FROM post ORDER BY id DESC';
             $objQuery = mysqli_query($conn, $sql);
             
         ?>
@@ -91,7 +91,7 @@
                     <h4 class="text-info" name="topicPost" class="topicPost"><?php echo $objResult["topic"]; ?></h4>
                     <div class="d-flex justify-content-between pt-3 text-muted">
                         <p>posted by <?php echo $objResult["username"]; ?></p>
-                        <p><?php echo $objResult["comment"];?> comments</p>
+                        <p><?php echo $objResult["date_create"];?></p>
                     </div>
                     
                 </div>   

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 04, 2021 at 02:03 AM
+-- Generation Time: Jun 04, 2021 at 06:13 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -33,21 +33,27 @@ CREATE TABLE `insidePost` (
   `topicown` varchar(100) CHARACTER SET latin1 NOT NULL,
   `comment` varchar(255) CHARACTER SET latin1 NOT NULL,
   `commentown` varchar(100) CHARACTER SET latin1 NOT NULL,
-  `like` int(11) NOT NULL
+  `like` int(11) NOT NULL,
+  `date_create` varchar(100) CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `insidePost`
 --
 
-INSERT INTO `insidePost` (`id`, `topic`, `topicown`, `comment`, `commentown`, `like`) VALUES
-(1, 'I LOVE YOU 3000', 'Tony Stark', 'I love you more than 3,000', 'its me', 30),
-(2, 'I LOVE YOU 3000', 'Tony Stark', '34', 'tukta', 13),
-(3, 'I LOVE YOU 3000', 'Tony Stark', 'love tuk ta mak mak lei', 'hathum', 13),
-(8, 'I LOVE YOU 3000', 'Tony Stark', 'we should go', 'hathum', 13),
-(9, 'I LOVE YOU 3000', 'Tony Stark', 'haha', 'hathum', 13),
-(10, 'I LOVE YOU 3000', 'Tony Stark', 'I wish you a marry christmas', 'hathum', 13),
-(11, 'DUSK TILL DOWN WITH PHP!!', 'hathum', 'I want this job so bad haha', 'hathum', 13);
+INSERT INTO `insidePost` (`id`, `topic`, `topicown`, `comment`, `commentown`, `like`, `date_create`) VALUES
+(1, 'I LOVE YOU 3000', 'Tony Stark', 'I love you more than 3,000', 'its me', 30, ''),
+(2, 'I LOVE YOU 3000', 'Tony Stark', '34', 'tukta', 13, ''),
+(3, 'I LOVE YOU 3000', 'Tony Stark', 'love tuk ta mak mak lei', 'hathum', 13, ''),
+(8, 'I LOVE YOU 3000', 'Tony Stark', 'we should go', 'hathum', 13, ''),
+(9, 'I LOVE YOU 3000', 'Tony Stark', 'haha', 'hathum', 13, ''),
+(10, 'I LOVE YOU 3000', 'Tony Stark', 'I wish you a marry christmas', 'hathum', 13, ''),
+(11, 'DUSK TILL DOWN WITH PHP!!', 'hathum', 'I want this job so bad haha', 'hathum', 13, ''),
+(12, 'I CANT ADD ANYTHING', 'kittitus', 'Let\'s check it out now you can !', 'kittitus', 13, ''),
+(13, 'Fix bug', 'hathum', 'Please work', 'hathum', 0, '4 june 2564 time: 11:09:16'),
+(14, 'Hello guys Now I already added date function. Enjoy!!', 'hathum', 'work maiii', 'hathum', 0, '4 june 2564 time: 11:09:45'),
+(15, 'hello hello', 'hathum', 'work please', 'hathum', 0, '4 june 2564 time: 11:10:12'),
+(16, 'New post last test', 'hathum', 'Test comment', 'hathum', 0, '4 june 2564 time: 11:11:54');
 
 -- --------------------------------------------------------
 
@@ -59,23 +65,30 @@ CREATE TABLE `post` (
   `id` int(11) NOT NULL,
   `topic` varchar(255) CHARACTER SET latin1 NOT NULL,
   `username` varchar(100) CHARACTER SET latin1 NOT NULL,
-  `comment` varchar(255) CHARACTER SET latin1 NOT NULL
+  `comment` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `date_create` varchar(100) CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `post`
 --
 
-INSERT INTO `post` (`id`, `topic`, `username`, `comment`) VALUES
-(5, 'I LOVE YOU 3000', 'Tony Stark', '40'),
-(6, 'HOW YOU LIKE THAT?', 'Lisa M', '34'),
-(10, 'BTS', 'tukta', '30'),
-(11, 'haha', 'tukta', '30'),
-(13, 'It\'s work!!', 'hathum', '30'),
-(17, '11 April 2019', 'tukta', '40'),
-(18, 'I LOVE TUKTA MAK MAK NA', 'hathum', '40'),
-(19, 'I CANT ADD ANYTHING', 'kittitus', '40'),
-(20, 'DUSK TILL DOWN WITH PHP!!', 'hathum', '40');
+INSERT INTO `post` (`id`, `topic`, `username`, `comment`, `date_create`) VALUES
+(5, 'I LOVE YOU 3000', 'Tony Stark', '40', '0000-00-00'),
+(6, 'HOW YOU LIKE THAT?', 'Lisa M', '34', '0000-00-00'),
+(10, 'BTS', 'tukta', '30', '0000-00-00'),
+(11, 'haha', 'tukta', '30', '0000-00-00'),
+(13, 'It\'s work!!', 'hathum', '30', '0000-00-00'),
+(17, '11 April 2019', 'tukta', '40', '0000-00-00'),
+(18, 'I LOVE TUKTA MAK MAK NA', 'hathum', '40', '0000-00-00'),
+(19, 'I CANT ADD ANYTHING', 'kittitus', '40', '0000-00-00'),
+(20, 'DUSK TILL DOWN WITH PHP!!', 'hathum', '40', '0000-00-00'),
+(21, 'Hello', 'hathum', '0', '4 june 2564 time: 05:52:50'),
+(22, 'hello', 'hathum', '0', '4 june 2564 time: 05:54:19'),
+(23, 'Hello guys Now I already added date function. Enjoy!!', 'hathum', '0', '4 june 2564 time: 05:55:25'),
+(24, 'Fix bug', 'hathum', '0', '4 june 2564 time: 11:00:14'),
+(26, 'hello hello', 'hathum', '0', '4 june 2564 time: 11:10:05'),
+(27, 'New post last test', 'hathum', '0', '4 june 2564 time: 11:11:38');
 
 -- --------------------------------------------------------
 
@@ -130,13 +143,13 @@ ALTER TABLE `wshareuser`
 -- AUTO_INCREMENT for table `insidePost`
 --
 ALTER TABLE `insidePost`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `wshareuser`
